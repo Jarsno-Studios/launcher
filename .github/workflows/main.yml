@@ -26,14 +26,15 @@ jobs:
       - name: Set up environment variables
         run: echo "GH_TOKEN=${{ secrets.GH_TOKEN }}" >> $GITHUB_ENV
 
-      # Install Wine and Mono
+      # Enable i386 architecture and install Wine and Mono
       - name: Install Wine and Mono
         run: |
+          sudo dpkg --add-architecture i386
           sudo apt update
-          sudo apt install -y wine mono-complete
+          sudo apt install -y wine wine32 mono-complete
 
       - name: Build for Linux
-        run: npm run electron:build -l deb AppImage
+        run: npm run electron:build -l AppImage
 
       - name: Upload Linux Artifacts
         uses: actions/upload-artifact@v2
@@ -44,7 +45,7 @@ jobs:
       - name: Build for Windows
         run: |
           rm -r dist/
-          npx electron-builder -w --ia32 zip nsis
+          npx electron-builder -w --ia32 zip
 
       - name: Upload Windows Artifacts
         uses: actions/upload-artifact@v2
