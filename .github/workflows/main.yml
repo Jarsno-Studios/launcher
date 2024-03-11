@@ -33,15 +33,15 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: launcher-linux-artifact
-          path: dist/
+          path: dist/*.AppImage
 
       - name: Build for Windows
         run: |
-          rm -r dist/*
+          rm -r dist/
           npm run electron:build -w --ia32 zip nsis
 
       - name: Upload Windows Artifacts
         uses: actions/upload-artifact@v2
         with:
           name: windows-artifacts
-          path: dist/
+          path: dist/*.zip
