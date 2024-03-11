@@ -51,4 +51,4 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: windows-artifacts
-          path: dist/win-unpacked-ia32
+          path: dist/win-unpacked
