@@ -11,6 +11,20 @@
   "keywords": [],
   "author": "Jarsno Studios, techguy16",
   "license": "GPL-2.0",
+  "build": {
+        "appId": "com.jarsnostudios.launcher",
+        "productName": "Jarsno Studios Launcher",
+        "directories": {
+            "output": "dist"
+        },
+        "win": {
+            "target": "zip"
+        },
+        "linux": {
+            "category": "AudioVideo",
+            "target": "AppImage"
+        }
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Jarsno-Studios/launcher.git"
