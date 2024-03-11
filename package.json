@@ -1,0 +1,27 @@
+{
+  "name": "jarsnostudios-launcher",
+  "version": "1.0.0",
+  "description": "A launcher for Jarsno Studios games.",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
+  },
+  "keywords": [],
+  "author": "Jarsno Studios, techguy16",
+  "license": "GPL-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jarsno-Studios/launcher.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Jarsno-Studios/launcher/issues"
+  },
+  "homepage": "https://github.com/Jarsno-Studios/launcher#readme",
+  "devDependencies": {
+    "electron": "^29.0.1"
+  },
+  "dependencies": {
+    "axios": "^1.6.7"
+  }
+}

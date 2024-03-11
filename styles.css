@@ -1,0 +1,124 @@
+/* Global CSS styles */
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border-radius: 10px;
+    background-color: #202124;
+    font-family:sans-serif;
+}
+
+/* Title bar styles */
+.titlebar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #444654;
+    color: white;
+    padding-right: 7px;
+}
+
+/* Title styles */
+#title {
+    flex-grow: 1;
+    /* Allow title to grow and take up remaining width */
+    font-weight: bold;
+    -webkit-app-region: drag;
+    overflow: hidden;
+    /* Add this line to handle long titles gracefully */
+    white-space: nowrap;
+    /* Prevent text from wrapping */
+    text-overflow: ellipsis;
+    /* Add ellipsis for long titles */
+    padding: 8px 16px;
+    text-transform: uppercase;
+    font-family: sans-serif;
+}
+
+/* Controls container styles */
+#controls {
+    flex-shrink: 0;
+    display: flex;
+    margin-right: 10px;
+}
+
+/* Control button styles */
+.controls button {
+    background: none;
+    border: none;
+    font-size: 18px;
+    color: #FFFFFF;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    cursor: pointer;
+    padding:10px 20px 12px 25px;
+    text-align:center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+
+.controls button::before {
+    padding-right: 5px;
+}
+
+.controls button:hover {
+    background-color: red;
+}
+
+/* Minimize Icon */
+#minimize::before {
+    content: "\2013";
+    /* Unicode for the horizontal line */
+}
+
+/* Unmaximize Icon (initial state) */
+.unmaximized::before {
+    content: "\25A2";
+    /* Unicode for a solid square */
+}
+
+/* Maximize Icon (when window is maximized) */
+.maximized::before {
+    content: "\25A3";
+    /* Unicode for a solid square */
+}
+
+/* Close Icon */
+#close::before {
+    content: "\2715";
+    /* Unicode for the multiplication sign (X) */
+}
+
+#main {
+    padding: 16px;
+}
+
+h1 {
+    color: #fff;
+}
+
+#game-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#main button {
+    margin: 8px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#main button:hover {
+    background-color: #45a049;
+}
+#game-table-body tr {
+    border-color:white;
+    border-radius:10px;
+}

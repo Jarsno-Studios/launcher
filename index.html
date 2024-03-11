@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <title>Jarsno Studios Launcher</title>
+  <style>
+    .game-item {
+      border: 1px solid black;
+      background-color: darkblue;
+      border-radius: 10px;
+      color: white;
+      margin: 10px;
+      width: 200px; /* Adjust as needed */
+      height: 200px; /* Adjust as needed */
+      float: left;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .game-item:hover {
+      background-color: blue;
+    }
+
+    .game-item img {
+      width: 100px; /* Adjust as needed */
+      height: auto;
+      margin-bottom: 10px; /* Adjust as needed */
+    }
+
+    .game-name {
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .play-button {
+      background-color: transparent;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
+    #main h1 {padding-left:10px;}
+  </style>
+</head>
+
+<body>
+  <div class="titlebar" id="titlebar">
+    <div id="title">Jarsno Studios Launcher</div>
+    <div class="controls">
+      <table>
+        <tr>
+          <th><button id="minimize"></button></th>
+          <th><button id="maximize" class="unmaximized"></button></th>
+          <th><button id="close"></button></th>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div id="main">
+    <h1>My Games</h1>
+    <div id="game-list"></div>
+  </div>
+
+  <script>
+    function displayGames(gameData) {
+      const gameList = document.getElementById('game-list');
+      Object.values(gameData.games).forEach(game => {
+        const gameDiv = document.createElement('div');
+        gameDiv.classList.add('game-item');
+
+        const gameLogo = document.createElement('img');
+        gameLogo.src = game.logo;
+        gameLogo.alt = game.name + ' logo';
+        gameDiv.appendChild(gameLogo);
+
+        const gameName = document.createElement('div');
+        gameName.textContent = game.name;
+        gameName.classList.add('game-name');
+        gameDiv.appendChild(gameName);
+
+        const playButton = document.createElement('button');
+        playButton.textContent = 'Play';
+        playButton.classList.add('play-button');
+        playButton.addEventListener('click', () => electron.createWindowWithoutMenu(game.versions[game.latest]));
+        gameDiv.appendChild(playButton);
+
+        gameList.appendChild(gameDiv);
+      });
+    }
+  </script>
+</body>
+
+</html>
