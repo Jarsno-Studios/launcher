@@ -45,10 +45,10 @@ jobs:
       - name: Build for Windows
         run: |
           rm -r dist/
-          npx electron-builder -w --ia32 zip
+          npx electron-builder -w --ia32
 
       - name: Upload Windows Artifacts
         uses: actions/upload-artifact@v2
         with:
           name: windows-artifacts
-          path: dist/*.zip
+          path: dist/win-unpacked-ia32
