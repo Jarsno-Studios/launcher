@@ -1,0 +1,43 @@
+name: Electron Build
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build for Linux
+        run: npm run electron:build -l deb AppImage
+
+      - name: Upload Linux Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: launcher-linux-artifact
+          path: dist/
+
+      - name: Build for Windows
+        run: |
+          rm -r dist/*
+          npm run electron:build -w --ia32 zip nsis
+
+      - name: Upload Windows Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: windows-artifacts
+          path: dist/
