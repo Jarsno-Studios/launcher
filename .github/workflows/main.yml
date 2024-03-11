@@ -34,7 +34,7 @@ jobs:
           sudo apt install -y wine wine32 mono-complete
 
       - name: Build for Linux
-        run: npm run electron:build -l AppImage
+        run: npx electron-builder -l AppImage -w
 
       - name: Upload Linux Artifacts
         uses: actions/upload-artifact@v2
@@ -42,13 +42,8 @@ jobs:
           name: launcher-linux-artifact
           path: dist/*.AppImage
 
-      - name: Build for Windows
-        run: |
-          rm -r dist/
-          npx electron-builder -w --ia32
-
       - name: Upload Windows Artifacts
         uses: actions/upload-artifact@v2
         with:
           name: windows-artifacts
-          path: dist/win-unpacked
+          path: dist/*.zip
