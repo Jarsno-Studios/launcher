@@ -26,6 +26,12 @@ jobs:
       - name: Set up environment variables
         run: echo "GH_TOKEN=${{ secrets.GH_TOKEN }}" >> $GITHUB_ENV
 
+      # Install Wine and Mono
+      - name: Install Wine and Mono
+        run: |
+          sudo apt update
+          sudo apt install -y wine mono-complete
+
       - name: Build for Linux
         run: npm run electron:build -l deb AppImage
 
