@@ -22,6 +22,10 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      # Set GitHub token as an environment variable
+      - name: Set up environment variables
+        run: echo "GH_TOKEN=${{ secrets.GH_TOKEN }}" >> $GITHUB_ENV
+
       - name: Build for Linux
         run: npm run electron:build -l deb AppImage
 
